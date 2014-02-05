@@ -14,7 +14,7 @@ To test the program:
 import io
 import unittest
 
-from Netflix.py import netflix_read, netflix_eval, netflix_print, netflix_solve
+from Netflix import netflix_read, netflix_eval, netflix_print, netflix_solve
 
 # -----------
 # TestNetflix
@@ -25,35 +25,38 @@ class TestNetflix (unittest.TestCase) :
 	# read
 	# ----
 	def test_read_1 (self) :
-		r = io.StringIO("2043:")
-		s = netflix_read(r)
-		self.assertTrue(s == "2043:")
+		r = io.StringIO("2043:\n")
+		s = next(netflix_read(r))
+		self.assertTrue(str(s) == "2043:")
 
 	def test_read_2 (self) :
-		r = io.StringIO("3.4")
-		s = netflix_read(r)
-		self.assertTrue(s == "3.4")
+		r = io.StringIO("3.4\n")
+		s = next(netflix_read(r))
+		self.assertTrue(str(s) == "3.4")
 
 	def test_read_3 (self) :
-		r = io.StringIO("")
-		s = netflix_read(r)
-		self.assertTrue(s == "")
+		r = io.StringIO("\n")
+		s = next(netflix_read(r))
+		self.assertTrue(str(s) == "")
 
 
 	# ----
 	# eval
 	# ----
 	def test_eval_1 (self) :
-		v = netflix_eval(2043, 1417435)
-		self.assertTrue(v >= 0.0 and v <= 5.0)
+		a, p = netflix_eval(2043, 1417435)
+		self.assertTrue(a >= 0.0 and a <= 5.0)
+		self.assertTrue(p >= 0.0 and p <= 5.0)
 
 	def test_eval_2 (self) :
-		v = netflix_eval(2043, 2312054)
-		self.assertTrue(v >= 0.0 and v <= 5.0)
+		a, p = netflix_eval(2043, 1417435)
+		self.assertTrue(a >= 0.0 and a <= 5.0)
+		self.assertTrue(p >= 0.0 and p <= 5.0)
 
 	def test_eval_3 (self) :
-		v = netflix_eval(10851, 2312054)
-		self.assertTrue(v >= 0.0 and v <= 5.0)
+		a, p = netflix_eval(2043, 1417435)
+		self.assertTrue(a >= 0.0 and a <= 5.0)
+		self.assertTrue(p >= 0.0 and p <= 5.0)
 
 
 	# -----
@@ -81,19 +84,19 @@ class TestNetflix (unittest.TestCase) :
 		r = io.StringIO("2043:\n1417435\n2312054\n462685\n")
 		w = io.StringIO()
 		netflix_solve(r, w)
-		self.assertTrue(w.getvalue() == "2043:\n3.4\n4.1\n1.9\nRMSE: 0.95\n")
+		self.assertTrue(w.getvalue() == "2043:\n1.0\n1.0\n1.0\nRMSE: 1.0\n")
 
 	def test_solve_2 (self) :
-		r = io.StringIO("2043:\n1417435\n2312054\n462685\n")
+		r = io.StringIO("10851:\n1417435\n2312054\n462685\n")
 		w = io.StringIO()
 		netflix_solve(r, w)
-		self.assertTrue(w.getvalue() == "2043:\n3.4\n4.1\n1.9\nRMSE: 0.95\n")
+		self.assertTrue(w.getvalue() == "10851:\n1.0\n1.0\n1.0\nRMSE: 1.0\n")
 
 	def test_solve_3 (self) :
 		r = io.StringIO("2043:\n1417435\n2312054\n462685\n")
 		w = io.StringIO()
 		netflix_solve(r, w)
-		self.assertTrue(w.getvalue() == "2043:\n3.4\n4.1\n1.9\nRMSE: 0.95\n")
+		self.assertTrue(w.getvalue() == "2043:\n1.0\n1.0\n1.0\nRMSE: 1.0\n")
 
 
 # ----
