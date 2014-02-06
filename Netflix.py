@@ -31,8 +31,8 @@ def netflix_eval (m, u) :
 	# Eval Here
 	p = 1.0
 	a = 2.0
-	assert(a >= 0.0 and a <= 5.0)
-	assert(p >= 0.0 and p <= 5.0)
+	assert(a >= 1.0 and a <= 5.0)
+	assert(p >= 1.0 and p <= 5.0)
 	return (a, p)
 
 

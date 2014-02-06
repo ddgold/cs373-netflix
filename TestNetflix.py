@@ -38,11 +38,6 @@ class TestNetflix (unittest.TestCase) :
 		r = io.StringIO("\n")
 		s = next(netflix_read(r))
 		self.assertTrue(str(s) == "")
-		
-	def test_read_4 (self) :
-		r = io.StringIO("")
-		s = next(netflix_read(r))
-		self.assertTrue(str(s) == "")
 
 	# ----
 	# eval
@@ -88,19 +83,37 @@ class TestNetflix (unittest.TestCase) :
 		r = io.StringIO("2043:\n1417435\n2312054\n462685\n")
 		w = io.StringIO()
 		netflix_solve(r, w)
-		self.assertTrue(w.getvalue() == "2043:\n1.0\n1.0\n1.0\nRMSE: 1.0\n")
+		s = w.getvalue()
+		x = str(s).split()
+		self.assertTrue(x[0] == "2043:")
+		self.assertTrue(float(x[1]) >= 1.0 and float(x[1]) <= 5.0)
+		self.assertTrue(float(x[2]) >= 1.0 and float(x[2]) <= 5.0)
+		self.assertTrue(float(x[3]) >= 1.0 and float(x[3]) <= 5.0)
+		self.assertTrue(x[4] == "RMSE:")
 
 	def test_solve_2 (self) :
 		r = io.StringIO("10851:\n1417435\n2312054\n462685\n")
 		w = io.StringIO()
 		netflix_solve(r, w)
-		self.assertTrue(w.getvalue() == "10851:\n1.0\n1.0\n1.0\nRMSE: 1.0\n")
+		s = w.getvalue()
+		x = str(s).split()
+		self.assertTrue(x[0] == "10851:")
+		self.assertTrue(float(x[1]) >= 1.0 and float(x[1]) <= 5.0)
+		self.assertTrue(float(x[2]) >= 1.0 and float(x[2]) <= 5.0)
+		self.assertTrue(float(x[3]) >= 1.0 and float(x[3]) <= 5.0)
+		self.assertTrue(x[4] == "RMSE:")
 
 	def test_solve_3 (self) :
 		r = io.StringIO("2043:\n1417435\n2312054\n462685\n")
 		w = io.StringIO()
 		netflix_solve(r, w)
-		self.assertTrue(w.getvalue() == "2043:\n1.0\n1.0\n1.0\nRMSE: 1.0\n")
+		s = w.getvalue()
+		x = str(s).split()
+		self.assertTrue(x[0] == "2043:")
+		self.assertTrue(float(x[1]) >= 1.0 and float(x[1]) <= 5.0)
+		self.assertTrue(float(x[2]) >= 1.0 and float(x[2]) <= 5.0)
+		self.assertTrue(float(x[3]) >= 1.0 and float(x[3]) <= 5.0)
+		self.assertTrue(x[4] == "RMSE:")
 
 
 # ----
