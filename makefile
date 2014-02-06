@@ -11,7 +11,7 @@ clean:
 	rm -f *.pyc
 
 diff: RunNetflix.in RunNetflix.py Netflix.py
-	RunNetflix.py < RunNetflix.in > RunNetflix.tmp
+	Python3 RunNetflix.py < RunNetflix.in > RunNetflix.tmp
 	diff RunNetflix.out RunNetflix.tmp
 	rm RunNetflix.tmp
 
@@ -41,7 +41,7 @@ Netflix.zip: makefile                                   \
            TestNetflix.py TestNetflix.out
 
 RunNetflix.out: RunNetflix.in RunNetflix.py Netflix.py
-	RunNetflix.py < RunNetflix.in > RunNetflix.out
+	Python3 RunNetflix.py < RunNetflix.in > RunNetflix.out
 
 TestNetflix.out: TestNetflix.py Netflix.py
-	TestNetflix.py >& TestNetflix.out
+	Python3 TestNetflix.py >& TestNetflix.out
