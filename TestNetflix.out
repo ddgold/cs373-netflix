@@ -1,0 +1,84 @@
+...EEEEEEEEE
+======================================================================
+ERROR: test_print_1 (__main__.TestNetflix)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "TestNetflix.py", line 71, in test_print_1
+    netflix_print(w, "12:")
+  File "/Users/lionfacegrrr/Desktop/cs373-netflix/Netflix.py", line 49, in netflix_print
+    w.write(s + "\n")
+TypeError: unicode argument expected, got 'str'
+
+======================================================================
+ERROR: test_print_2 (__main__.TestNetflix)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "TestNetflix.py", line 76, in test_print_2
+    netflix_print(w, "2.4")
+  File "/Users/lionfacegrrr/Desktop/cs373-netflix/Netflix.py", line 49, in netflix_print
+    w.write(s + "\n")
+TypeError: unicode argument expected, got 'str'
+
+======================================================================
+ERROR: test_print_3 (__main__.TestNetflix)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "TestNetflix.py", line 81, in test_print_3
+    netflix_print(w, "RMSE: 0.95")
+  File "/Users/lionfacegrrr/Desktop/cs373-netflix/Netflix.py", line 49, in netflix_print
+    w.write(s + "\n")
+TypeError: unicode argument expected, got 'str'
+
+======================================================================
+ERROR: test_read_1 (__main__.TestNetflix)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "TestNetflix.py", line 28, in test_read_1
+    r = io.StringIO("2043:\n")
+TypeError: initial_value must be unicode or None, not str
+
+======================================================================
+ERROR: test_read_2 (__main__.TestNetflix)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "TestNetflix.py", line 33, in test_read_2
+    r = io.StringIO("3.4\n")
+TypeError: initial_value must be unicode or None, not str
+
+======================================================================
+ERROR: test_read_3 (__main__.TestNetflix)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "TestNetflix.py", line 38, in test_read_3
+    r = io.StringIO("\n")
+TypeError: initial_value must be unicode or None, not str
+
+======================================================================
+ERROR: test_solve_1 (__main__.TestNetflix)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "TestNetflix.py", line 88, in test_solve_1
+    r = io.StringIO("2043:\n1417435\n2312054\n462685\n")
+TypeError: initial_value must be unicode or None, not str
+
+======================================================================
+ERROR: test_solve_2 (__main__.TestNetflix)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "TestNetflix.py", line 94, in test_solve_2
+    r = io.StringIO("10851:\n1417435\n2312054\n462685\n")
+TypeError: initial_value must be unicode or None, not str
+
+======================================================================
+ERROR: test_solve_3 (__main__.TestNetflix)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "TestNetflix.py", line 100, in test_solve_3
+    r = io.StringIO("2043:\n1417435\n2312054\n462685\n")
+TypeError: initial_value must be unicode or None, not str
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.001s
+
+FAILED (errors=9)
+TestNetflix.py

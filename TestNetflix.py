@@ -38,25 +38,29 @@ class TestNetflix (unittest.TestCase) :
 		r = io.StringIO("\n")
 		s = next(netflix_read(r))
 		self.assertTrue(str(s) == "")
-
+		
+	def Test_read_4 (self) :
+		r = io.StringIO("")
+		s = next(netflix_read(r))
+		self.assertTrue(str(s) == "")
 
 	# ----
 	# eval
 	# ----
 	def test_eval_1 (self) :
 		a, p = netflix_eval(2043, 1417435)
-		self.assertTrue(a >= 0.0 and a <= 5.0)
-		self.assertTrue(p >= 0.0 and p <= 5.0)
+		self.assertTrue(a >= 1.0 and a <= 5.0)
+		self.assertTrue(p >= 1.0 and p <= 5.0)
 
 	def test_eval_2 (self) :
 		a, p = netflix_eval(2043, 1417435)
-		self.assertTrue(a >= 0.0 and a <= 5.0)
-		self.assertTrue(p >= 0.0 and p <= 5.0)
+		self.assertTrue(a >= 1.0 and a <= 5.0)
+		self.assertTrue(p >= 1.0 and p <= 5.0)
 
 	def test_eval_3 (self) :
 		a, p = netflix_eval(2043, 1417435)
-		self.assertTrue(a >= 0.0 and a <= 5.0)
-		self.assertTrue(p >= 0.0 and p <= 5.0)
+		self.assertTrue(a >= 1.0 and a <= 5.0)
+		self.assertTrue(p >= 1.0 and p <= 5.0)
 
 
 	# -----
@@ -74,8 +78,8 @@ class TestNetflix (unittest.TestCase) :
 
 	def test_print_3 (self) :
 		w = io.StringIO()
-		netflix_print(w, "RNSE: 0.95")
-		self.assertTrue(w.getvalue() == "RNSE: 0.95\n")
+		netflix_print(w, "RMSE: 0.95")
+		self.assertTrue(w.getvalue() == "RMSE: 0.95\n")
 
 	# -----
 	# solve
