@@ -39,7 +39,7 @@ class TestNetflix (unittest.TestCase) :
 		s = next(netflix_read(r))
 		self.assertTrue(str(s) == "")
 		
-	def Test_read_4 (self) :
+	def test_read_4 (self) :
 		r = io.StringIO("")
 		s = next(netflix_read(r))
 		self.assertTrue(str(s) == "")
