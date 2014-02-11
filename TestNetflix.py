@@ -43,17 +43,17 @@ class TestNetflix (unittest.TestCase) :
 	# eval
 	# ----
 	def test_eval_1 (self) :
-		a, p = netflix_eval(2043, 1417435)
+		a, p = netflix_eval("2043", "1417435")
 		self.assertTrue(a >= 1.0 and a <= 5.0)
 		self.assertTrue(p >= 1.0 and p <= 5.0)
 
 	def test_eval_2 (self) :
-		a, p = netflix_eval(2043, 1417435)
+		a, p = netflix_eval("2043", "1417435")
 		self.assertTrue(a >= 1.0 and a <= 5.0)
 		self.assertTrue(p >= 1.0 and p <= 5.0)
 
 	def test_eval_3 (self) :
-		a, p = netflix_eval(2043, 1417435)
+		a, p = netflix_eval("2043", "1417435")
 		self.assertTrue(a >= 1.0 and a <= 5.0)
 		self.assertTrue(p >= 1.0 and p <= 5.0)
 
