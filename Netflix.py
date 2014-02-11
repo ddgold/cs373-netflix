@@ -4,6 +4,15 @@
 # imports
 # -------
 import math
+import json
+
+#	-------------
+#	GLOBAL VARS
+#   -------------
+
+UserCache = {}
+MovieCache = {}
+ActualCache = {}
 
 # ------------
 # netflix_read
@@ -25,12 +34,10 @@ def netflix_eval (m, u) :
 	u is the id of a user
 	return accutal and predicted rating of movie m for user u
 	"""
-	assert(m > 0)
-	assert(u > 0)
-
-	# Eval Here
-	p = 1.0
-	a = 2.0
+	assert(type(m) is str and m != "")
+	assert(type(u) is str and u != "")
+	p = (MovieCache[m] * 0.3) + (UserCache[u]) * 0.7)
+	a = ActualCache[str((m, u))]
 	assert(a >= 1.0 and a <= 5.0)
 	assert(p >= 1.0 and p <= 5.0)
 	return (a, p)
@@ -58,16 +65,21 @@ def netflix_solve (r, w) :
 	r is reader
 	w is writer
 	"""
-	m = 0
+	global UserCache, MovieCache, ActualCache
+	UserCache = json.load(open('UserCache.json'))
+	MovieCache = json.load(open('MovieCache.json'))
+	ActualCache = json.load(open('ActualCache.json'))
+	
+	m = ""
 	i = 0
 	rmse = 0
 	for s in netflix_read(r) :
 		if s[len(s) - 1] == ':' :
-			m = int(s[:len(s) - 1])
+			m = (s[:len(s) - 1])
 			netflix_print(w, s)
 		else :
-			assert (m > 0)
-			a, p = netflix_eval(m, int(s))
+			assert (m != "")
+			a, p = netflix_eval(m, s)
 			rmse += (a - p) ** 2
 			i += 1
 			netflix_print(w, str(p))
