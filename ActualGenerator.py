@@ -22,11 +22,14 @@ def readFile(r) :
 
 def buildActual() :
 	m = ""
+	cache = {}
 	for x in (readFile(sys.stdin)) :
 		if (x[len(x) - 1] == ":") :
 			m = openMovie(x[:len(x) - 1])
 		else :
-			print(str(findUser(m, x)))
+			cache[str((m, x))] = findUser(m, x)
+	with open('ActualCache.json', 'w') as f:
+		json.dump(cache, f)
 
 def buildUser() :
 	f = open("/u/downing/cs/netflix/movie_titles.txt", encoding = "ISO-8859-1")
@@ -42,6 +45,8 @@ def buildUser() :
 				cache[y[0]] = [0, 0]
 			cache[y[0]][0] += int(y[1])
 			cache[y[0]][1] += 1
+	for key, value in cache.items() :
+		cache[key] = value[0] / value[1]
 	return cache
 
 def buildMovie () :
@@ -57,11 +62,20 @@ def buildMovie () :
 			y = line2.split(",")
 			cache[x[0]][0] += int(y[1])
 			cache[x[0]][1] += 1
+	for key, value in cache.items() :
+			cache[key] = value[0]/value[1]
 	return cache
 
 def buildCache ():
 	movies = buildMovie()
 	users = buildUser()
+	with open('MovieCache.json', 'w') as f:
+		json.dump(movies, f)
+	with open('UserCache.json', 'w') as f:
+		json.dump(users, f)
+
+	"""	
+	OLD DECREPID CODE
 	combo = {}
 	m = 0
 	for x in (readFile(sys.stdin)) :
@@ -73,5 +87,5 @@ def buildCache ():
 			combo[str((m, u))] = (movies[str(m)][0] / movies[str(m)][1] + users[str(u)][0] / users[str(u)][1]) / 2
 	with open('Cache.json', 'w') as f:
 		json.dump(combo, f)
-
-buildCache()
+	"""
+buildActual()
