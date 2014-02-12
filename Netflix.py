@@ -65,9 +65,9 @@ def netflix_solve (r, w) :
 	w is writer
 	"""
 	global UserCache, MovieCache, ActualCache
-	UserCache = json.load(open('UserCache.json'))
-	MovieCache = json.load(open('MovieCache.json'))
-	ActualCache = json.load(open('ActualCache.json'))
+	UserCache = json.load(open('/u/thunt/cs373-netflix-tests/ddg625-UserCache.json'))
+	MovieCache = json.load(open('/u/thunt/cs373-netflix-tests/ddg625-MovieCache.json'))
+	ActualCache = json.load(open('/u/thunt/cs373-netflix-tests/ddg625-ActualCache.json'))
 	
 	m = ""
 	i = 0
