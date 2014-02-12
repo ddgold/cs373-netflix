@@ -72,11 +72,17 @@ def netflix_solve (r, w) :
 	r is reader
 	w is writer
 	"""
-	global UserCache, MovieCache, ActualCache
-	ActualCache = json.load(open('/u/thunt/cs373-netflix-tests/ddg625-ActualCache.json', 'r'))
-	MovieCache = json.load(open('/u/thunt/cs373-netflix-tests/ddg625-MovieCache.json', 'r'))
-	UserCache = json.load(open('/u/thunt/cs373-netflix-tests/ddg625-UserCache.json', 'r'))
-
+	global ActualCache, MovieCache, UserCache
+	f = open('/u/thunt/cs373-netflix-tests/ddg625-ActualCache.json', 'r')
+	ActualCache = json.load(f)
+	f.close()
+	f = open('/u/thunt/cs373-netflix-tests/ddg625-MovieCache.json', 'r')
+	MovieCache = json.load(f)
+	f.close()
+	f = open('/u/thunt/cs373-netflix-tests/ddg625-UserCache.json', 'r')
+	UserCache = json.load(f)
+	f.close()
+	
 	m = ""
 	i = 0
 	rmse = 0
@@ -92,3 +98,5 @@ def netflix_solve (r, w) :
 			netflix_print(w, str(p))
 	rmse = math.sqrt(rmse / i)
 	netflix_print(w, "RMSE: " + str(rmse))
+
+
