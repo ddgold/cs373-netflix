@@ -99,6 +99,33 @@ def buildDecades () :
 			i += 1
 	return cache
 
+def buildYear () :
+	f = open("/u/downing/cs/netflix/movie_titles.txt", encoding = "ISO-8859-1")
+	cache = {}
+	for line in f :
+		x = line.split(",")
+		if x[1] != "NULL" :
+			year = (int(x[1]) - 1890) // 10
+		else :
+			year = -1
+		cache[x[0]] = year
+	return cache
+
+def buildAvg () :
+	f = open("/u/downing/cs/netflix/movie_titles.txt", encoding = "ISO-8859-1")
+	s = 0
+	i = 0
+	for line in f :
+		x = line.split(",")
+		m = findMovie(x[0])
+		f2 = open(m, "r")
+		f2.readline()
+		for line2 in f2 :
+			y = line2.split(",")
+			s += int(y[1])
+			i += 1
+	return s / i
+
 
 def buildCache (cache):
 	if cache == 0 or cache == 1 :
@@ -125,6 +152,15 @@ def buildCache (cache):
 		with open('DecadesCache.json', 'w') as f:
 			json.dump(decades, f)
 		print ("DecadesCache Done.")
+	if cache == 0 or cache == 5 :
+		print ("YearCache Started...")
+		year = buildYear()
+		with open('YearCache.json', 'w') as f:
+			json.dump(year, f)
+		print ("YearCache Done.")
+	if cache == 0 or cache == 6 :
+		print ("Calulate Total Avg...")
+		print ("avg = " + str(buildAvg()))
 
 print (sys.argv[0])
 if len(sys.argv) > 1 :

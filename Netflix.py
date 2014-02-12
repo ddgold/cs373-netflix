@@ -9,9 +9,10 @@ import json
 # -------
 # globals
 # -------
-UserCache = {}
-MovieCache = {}
 ActualCache = {}
+MovieCache = {}
+UserCache = {}
+NetAvg = 3.604289964420661
 
 # ------------
 # netflix_read
@@ -35,8 +36,15 @@ def netflix_eval (m, u) :
 	"""
 	assert(type(m) is str and m != "")
 	assert(type(u) is str and u != "")
-	p = (MovieCache[m] * 0.3) + (UserCache[u] * 0.7)
+
 	a = ActualCache[str((m, u))]
+	p = NetAvg + (MovieCache[m] - NetAvg) + (UserCache[u] - NetAvg)
+
+	if p > 5.0 :
+		p = 5.0
+	if p < 1.0 :
+		p = 1.0
+
 	assert(a >= 1.0 and a <= 5.0)
 	assert(p >= 1.0 and p <= 5.0)
 	return (a, p)
@@ -65,10 +73,10 @@ def netflix_solve (r, w) :
 	w is writer
 	"""
 	global UserCache, MovieCache, ActualCache
-	UserCache = json.load(open('/u/thunt/cs373-netflix-tests/ddg625-UserCache.json'))
-	MovieCache = json.load(open('/u/thunt/cs373-netflix-tests/ddg625-MovieCache.json'))
-	ActualCache = json.load(open('/u/thunt/cs373-netflix-tests/ddg625-ActualCache.json'))
-	
+	ActualCache = json.load(open('/u/thunt/cs373-netflix-tests/ddg625-ActualCache.json', 'r'))
+	MovieCache = json.load(open('/u/thunt/cs373-netflix-tests/ddg625-MovieCache.json', 'r'))
+	UserCache = json.load(open('/u/thunt/cs373-netflix-tests/ddg625-UserCache.json', 'r'))
+
 	m = ""
 	i = 0
 	rmse = 0
