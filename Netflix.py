@@ -6,10 +6,9 @@
 import math
 import json
 
-#	-------------
-#	GLOBAL VARS
-#   -------------
-
+# -------
+# globals
+# -------
 UserCache = {}
 MovieCache = {}
 ActualCache = {}
@@ -36,7 +35,7 @@ def netflix_eval (m, u) :
 	"""
 	assert(type(m) is str and m != "")
 	assert(type(u) is str and u != "")
-	p = (MovieCache[m] * 0.3) + (UserCache[u]) * 0.7)
+	p = (MovieCache[m] * 0.3) + (UserCache[u] * 0.7)
 	a = ActualCache[str((m, u))]
 	assert(a >= 1.0 and a <= 5.0)
 	assert(p >= 1.0 and p <= 5.0)
