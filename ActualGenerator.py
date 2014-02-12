@@ -12,7 +12,7 @@ def findMovie(m) :
 	return s
 
 def findUser(m, u) :
-	f = open(m, "r")
+	f = open(findMovie(m), "r")
 	f.readline()
 	for line in f :
 		x = line.split(',')
@@ -24,15 +24,20 @@ def buildActual() :
 	f = open("/u/downing/cs/netflix/probe.txt", encoding = "ISO-8859-1")
 	cache = {}
 	m = ""
+	t ={}
 	for line in f :
 		if line[len(line) - 2] == ":" :
 			m = line[:len(line) - 2]
+			f2 = f = open(findMovie(line[:len(line) - 2]), "r")
+			f.readline()
+			for line in f :
+				x = line.split(',')
+				t[x[0]] = int(x[1])
 		else :
-			assert (m != "")
+			assert (t != {})
 			u = line[:len(line) - 1]
-			cache[(str((m, u)))] = findUser(findMovie(m), u)
+			cache[(str((m, u)))] = t[u]
 	return cache
-
 
 def buildUser() :
 	f = open("/u/downing/cs/netflix/movie_titles.txt", encoding = "ISO-8859-1")
@@ -66,8 +71,34 @@ def buildMovie () :
 			cache[x[0]][0] += int(y[1])
 			cache[x[0]][1] += 1
 	for key, value in cache.items() :
-			cache[key] = value[0]/value[1]
+		cache[key] = value[0]/value[1]
 	return cache
+
+def buildDecades () :
+	f = open("/u/downing/cs/netflix/movie_titles.txt", encoding = "ISO-8859-1")
+	cache = {}
+	for line in f :
+		x = line.split(",")
+		m = findMovie(x[0])
+		f2 = open(m, "r")
+		f2.readline()
+		if x[1] != "NULL" :
+			year = (int(x[1]) - 1890) // 10
+		else :
+			continue
+		for line2 in f2 :
+			y = line2.split(",")
+			if cache.get(y[0]) == None :
+				cache[y[0]] = [[0, 0]] * 12
+			cache[y[0]][year][0] += int(y[1])
+			cache[y[0]][year][1] += 1
+	for key, value in cache.items() :
+		i = 0
+		while i < len(value) :
+			cache[key][i]  = value[i][0] / value[i][1]
+			i += 1
+	return cache
+
 
 def buildCache (cache):
 	if cache == 0 or cache == 1 :
@@ -88,7 +119,12 @@ def buildCache (cache):
 		with open('ActualCache.json', 'w') as f:
 			json.dump(actual, f)
 		print ("ActualCache Done.")
-
+	if cache == 0 or cache == 4 :
+		print ("DecadesCache Started...")
+		decades = buildDecades()
+		with open('DecadesCache.json', 'w') as f:
+			json.dump(decades, f)
+		print ("DecadesCache Done.")
 
 print (sys.argv[0])
 if len(sys.argv) > 1 :
