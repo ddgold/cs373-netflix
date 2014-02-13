@@ -62,16 +62,14 @@ def netflix_print (w, s) :
 	assert(type(s) is str)
 	w.write(s + "\n")
 
-
 # -------------
-# netflix_solve
-# -------------
-def netflix_solve (r, w) :
+# netflix_build
+#--------------
+def netflix_build () :
 	"""
-	read, eval, print loop
-	r is reader
-	w is writer
+	reads in caches
 	"""
+	
 	global ActualCache, MovieCache, UserCache
 	f = open('/u/thunt/cs373-netflix-tests/ddg625-ActualCache.json', 'r')
 	ActualCache = json.load(f)
@@ -82,6 +80,23 @@ def netflix_solve (r, w) :
 	f = open('/u/thunt/cs373-netflix-tests/ddg625-UserCache.json', 'r')
 	UserCache = json.load(f)
 	f.close()
+	
+	assert(ActualCache != {})
+	assert(MovieCache != {})
+	assert(UserCache != {})
+	return True
+
+# -------------
+# netflix_solve
+# -------------
+def netflix_solve (r, w) :
+	"""
+	read, eval, print loop
+	r is reader
+	w is writer
+	"""
+	
+	netflix_build()
 	
 	m = ""
 	i = 0
