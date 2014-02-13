@@ -1,0 +1,116 @@
+commit 5a6eb2e44197aef6141a6954cbdab2aa512cea78
+Author: Doug <ddg625@cs.utexas.edu>
+Date:   Thu Feb 13 13:07:33 2014 -0600
+
+    added new funtion with unit tests to build caches. Fixed #22.
+
+commit 8c0d547c155bf378bafc416908469ce261db4099
+Author: Doug <ddg625@cs.utexas.edu>
+Date:   Wed Feb 12 15:45:44 2014 -0600
+
+    Closed .json files after load.  Fixed #21.
+
+commit 7ea89429b7e5992d8b850c1453de85df01ee62d5
+Merge: ca33aa3 be0b6e0
+Author: Doug <ddg625@cs.utexas.edu>
+Date:   Wed Feb 12 15:21:47 2014 -0600
+
+    Merge branch 'master' of https://github.com/ddgold/cs373-netflix
+
+commit ca33aa347ee3293316e17c165d80b0cf6cb93f68
+Author: Doug <ddg625@cs.utexas.edu>
+Date:   Wed Feb 12 15:20:02 2014 -0600
+
+    Improved RMSE to sub 1.0 using offset method.  Fixed #18 #19 #20.
+
+commit be0b6e07e2050ac4e1e2ae4cf27ac42a15d46972
+Author: Robert Hammond <lionfacegrrr@rO2b.local>
+Date:   Wed Feb 12 12:07:10 2014 -0600
+
+    fixed the return line problem we think we are having with RunNetflix.in
+
+commit 21b546e5a02c3078fec4a99bdf3341bd54fad0ec
+Author: Doug <ddg625@cs.utexas.edu>
+Date:   Wed Feb 12 11:49:37 2014 -0600
+
+    Pushed caches to test repo and updated links.  Fixes #5. Fixes #17.
+
+commit ec28608277946b3e882266a7baff36a6c6f75c3a
+Author: Doug <ddg625@cs.utexas.edu>
+Date:   Wed Feb 12 09:05:58 2014 -0600
+
+    Improved speed of cache build. First working solution RMSE = 1.008.  Fiexd #5.
+
+commit 62cbeee841c973f07f69bedaa11dce35bf913bd5
+Author: Doug <ddg625@cs.utexas.edu>
+Date:   Tue Feb 11 16:14:07 2014 -0600
+
+    Fixed infinate loop in cache generation, fixed #16.  Updated unit tests, fixed #14.
+
+commit a5d84acf47b720f93f95bbf4e7870ba37ac2ce9f
+Author: Robert Hammond <lionfacegrrr@rO2b.local>
+Date:   Tue Feb 11 13:54:21 2014 -0600
+
+    Created RunNetflix.in by gutting a sizable chunk of probe.txt. fixed #4
+
+commit 5456746ce29d68d211041770c7ee66d3d64b1b7d
+Author: robert hammond <lionface@cs.utexas.edu>
+Date:   Tue Feb 11 13:40:45 2014 -0600
+
+    Finished implementation and fixed varriable type problems.  Fixed #14.  Fixed #15.
+
+commit df78a043a6e535b9678e2be815913db2a468a10e
+Author: robert hammond <lionface@cs.utexas.edu>
+Date:   Mon Feb 10 12:33:57 2014 -0600
+
+    Edited cache generator, now equally weights movie avg and user avg
+
+commit dddc45d72b37886cec47d01372a9d7486dd79599
+Author: Doug <ddg625@cs.utexas.edu>
+Date:   Thu Feb 6 13:56:51 2014 -0600
+
+    Added code for generating caches
+
+commit 02ad19f0c3051af0ef4721cfdbfc421da1f9474b
+Author: Doug <ddg625@cs.utexas.edu>
+Date:   Thu Feb 6 11:39:55 2014 -0600
+
+    Updated unit tests, ready to begin eval. Fixes #12. Fixes #13.
+
+commit 54a35c2a1a42dd8d5577e36bdd4c5585bd4e9dac
+Author: Doug <ddg625@cs.utexas.edu>
+Date:   Thu Feb 6 11:19:31 2014 -0600
+
+    Added 'python3' to makefile.  Fixes #7.
+
+commit cd915a05aad786b9d323503080c92944e0341c5d
+Author: Robert Hammond <lionfacegrrr@rO2b.local>
+Date:   Wed Feb 5 22:16:08 2014 -0600
+
+    fixed a few small things in TestNetflix.py and ran the test locally
+    
+    issue number 12 created
+
+commit c2b3ca01cf3e9b3144e9d60790c8eba8e7679f85
+Author: Doug <ddg625@cs.utexas.edu>
+Date:   Wed Feb 5 15:12:39 2014 -0600
+
+    Created skeleton code and updated unit tests.  Fixes #11.
+
+commit 299ba41e0cc396002305c75ae4fafaaf66f060e4
+Author: Doug <ddg625@cs.utexas.edu>
+Date:   Wed Feb 5 11:30:27 2014 -0600
+
+    Created Unit Tests. Fixes #3.
+
+commit 5f656b652fce9a6d09ab66548830b24573729889
+Author: Doug <ddg625@cs.utexas.edu>
+Date:   Wed Feb 5 10:59:23 2014 -0600
+
+    Adding files from class repo
+
+commit 3a3058434a92728d0c1c8d2446a9f2b72f26e370
+Author: ddgold <ddgold@me.com>
+Date:   Wed Feb 5 08:52:54 2014 -0800
+
+    Initial commit
